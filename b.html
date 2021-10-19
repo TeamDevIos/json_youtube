@@ -18,7 +18,20 @@ function downloadURI(uri, name) {
   document.body.removeChild(link);
   delete link;
 }
-downloadURI("https://r3---sn-npoeenly.googlevideo.com/videoplayback?expire=1634632936&ei=iDBuYeuBKfGj4t4Pyo6RgAQ&ip=84.17.39.216&id=o-APuFvWgVmralOlyD3yah7lSC56n7bY5ewAyRFWixzJMR&itag=18&source=youtube&requiressl=yes&mh=VH&mm=31%2C29&mn=sn-npoeenly%2Csn-npoe7n7y&ms=au%2Crdu&mv=m&mvi=3&pl=24&gcr=sg&initcwndbps=628750&vprv=1&mime=video%2Fmp4&ns=asOtiZuRAe143SZhrhGyA3sG&gir=yes&clen=27112152&ratebypass=yes&dur=301.418&lmt=1626560252453800&mt=1634610545&fvip=3&fexp=24001373%2C24007246&beids=9466588&c=WEB&txp=5530422&n=_ngwsAY0WRQmsw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cgcr%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIhAJ2tHompcWgTP8UDB1Ctzqgd3oQrFaPf-FmLLsB6PIslAiAfLZXmFvNXFdv6QmctXAxnwckjFqVdQkT82BuWUwpQLg%3D%3D&sig=AOq0QJ8wRgIhALQ0edh2nRH43gvfki0asykMSH4nsLKg-CcuDZGtBoO1AiEAneifMXV-vDfVi3C2XPGUncRJ6xd2aJB1-x_W1x0Cxec=", "a.mp4")
+
+function download(url, filename) {
+  fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+  })
+  .catch(console.error);
+}
+
+download("https://r3---sn-npoeenly.googlevideo.com/videoplayback?expire=1634632936&ei=iDBuYeuBKfGj4t4Pyo6RgAQ&ip=84.17.39.216&id=o-APuFvWgVmralOlyD3yah7lSC56n7bY5ewAyRFWixzJMR&itag=18&source=youtube&requiressl=yes&mh=VH&mm=31%2C29&mn=sn-npoeenly%2Csn-npoe7n7y&ms=au%2Crdu&mv=m&mvi=3&pl=24&gcr=sg&initcwndbps=628750&vprv=1&mime=video%2Fmp4&ns=asOtiZuRAe143SZhrhGyA3sG&gir=yes&clen=27112152&ratebypass=yes&dur=301.418&lmt=1626560252453800&mt=1634610545&fvip=3&fexp=24001373%2C24007246&beids=9466588&c=WEB&txp=5530422&n=_ngwsAY0WRQmsw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cgcr%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIhAJ2tHompcWgTP8UDB1Ctzqgd3oQrFaPf-FmLLsB6PIslAiAfLZXmFvNXFdv6QmctXAxnwckjFqVdQkT82BuWUwpQLg%3D%3D&sig=AOq0QJ8wRgIhALQ0edh2nRH43gvfki0asykMSH4nsLKg-CcuDZGtBoO1AiEAneifMXV-vDfVi3C2XPGUncRJ6xd2aJB1-x_W1x0Cxec=", "a.mp4")
 </script>
 
 </body>
